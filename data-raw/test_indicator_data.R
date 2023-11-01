@@ -1,4 +1,14 @@
-inv_logit <- function(x) 1 / (1 + exp(-x))
+
+
+# We have a simple function inv_logit in utils.R
+# We have the object id_metadata, which models the structure we'll likely use
+# Our recipe is as follows:
+
+# For each id in id_metadata$id
+#   check if the corresponding metadata[[id]]$dataless is FALSE
+#   if it is not FALSE, do something
+
+
 set.seed(12)
 
 
@@ -83,10 +93,9 @@ for (i in 1:nrow(dta)) {
     )
 }
 
-test_indicator_data <- jsonlite::toJSON(overall_list)
 
 # We can check this has the expected structure using the listviewer::jsonedit function
 
 # listviewer::jsonedit(overall_list_json, height = "800px", mode = "view")
 
-usethis::use_data(test_indicator_data, overwrite = TRUE)
+usethis::use_data(overall_list, overwrite = TRUE)
